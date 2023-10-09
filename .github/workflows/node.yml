@@ -41,6 +41,7 @@ jobs:
       pages: write
       security-events: write
       packages: write
+      contents: write
 
     steps:
     - name: Checkout código
