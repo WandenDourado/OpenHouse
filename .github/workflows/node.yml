@@ -30,23 +30,17 @@ jobs:
         name: build
         path: build
 
-  triage:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-    steps:
-      - uses: actions/labeler@v4
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
   deploy:
-    needs: triage
+    needs: build
     runs-on: ubuntu-latest
     permissions:
       repository-projects: write
       pull-requests: write
+      deployments: write
+      pages: write
+      security-events: write
+      packages: write
 
     steps:
     - name: Checkout código
