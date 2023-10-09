@@ -35,16 +35,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Excluir todos os itens da branch main
+    - name: GIT commit and push all changed files
+      env: 
+        CI_COMMIT_MESSAGE: Continuous Integration Build Artifacts
+        CI_COMMIT_AUTHOR: Continuous Integration
       run: |
-        git clone https://github.com/WandenDourado/OpenHouse.git
-        cd OpenHouse        
-        git config user.name "${{ github.actor }}"
-        git config user.email "${{ github.actor }}@users.noreply.github.com"
-        git checkout main
-        git rm -rf .
-        git commit -m "Limpar a branch main"
-        git push https://${{ secrets.GITHUB_TOKEN }}@github.com/WandenDourado/OpenHouse.git main
+        git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
+        git config --global user.email "username@users.noreply.github.com"
+        git commit -a -m "${{ env.CI_COMMIT_MESSAGE }}"
+        git push
 
   deploy:
     needs: cleanup
