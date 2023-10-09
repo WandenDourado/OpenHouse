@@ -44,7 +44,7 @@ jobs:
         git checkout main
         git rm -rf .
         git commit -m "Limpar a branch main"
-        git push https://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@github.com/WandenDourado/OpenHouse.git main
+        git push https://${{ secrets.GITHUB_TOKEN }}@github.com/WandenDourado/OpenHouse.git main
 
   deploy:
     needs: cleanup
