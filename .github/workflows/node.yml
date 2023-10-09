@@ -37,7 +37,8 @@ jobs:
     steps:
     - name: Excluir todos os itens da branch main
       run: |
-        cd $GITHUB_WORKSPACE  # Mude para o diretório do repositório Git
+        git clone https://github.com/WandenDourado/OpenHouse.git
+        cd OpenHouse        
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor }}@users.noreply.github.com"
         git checkout main
