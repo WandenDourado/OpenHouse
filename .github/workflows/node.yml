@@ -64,6 +64,7 @@ jobs:
         git fetch
         git branch
         git checkout main
+        git rm -rf .
         git add .
         git commit -m "Atualizar build"
         git push
