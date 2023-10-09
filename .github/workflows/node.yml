@@ -30,6 +30,12 @@ jobs:
         mv build/* .
         rm -r build
 
+    - name: Publicar artefatos
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-artifacts  # Nome do conjunto de artefatos
+        path: .               # Pasta raiz onde estão os artefatos
+
 
   deploy:
     needs: build
@@ -50,8 +56,7 @@ jobs:
     - name: Download artefatos
       uses: actions/download-artifact@v2
       with:
-        name: build
-        path: build
+        name: build-artifacts
 
     - name: Push para a branch main
       env:
