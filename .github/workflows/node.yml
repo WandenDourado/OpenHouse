@@ -24,17 +24,11 @@ jobs:
     - name: Build da aplicação React
       run: npm run build
 
-    - name: Mover artefatos para a raiz
-      run: |
-        cd $GITHUB_WORKSPACE
-        mv build/* .
-        rm -r build
-
     - name: Publicar artefatos
       uses: actions/upload-artifact@v2
       with:
         name: build-artifacts  # Nome do conjunto de artefatos
-        path: .               # Pasta raiz onde estão os artefatos
+        path: build              
 
 
   deploy:
@@ -56,7 +50,8 @@ jobs:
     - name: Download artefatos
       uses: actions/download-artifact@v2
       with:
-        name: build-artifacts
+        name: build-artifacts # Nome do conjunto de artefatos
+        path: . # Pasta raiz onde estão os artefatos
 
     - name: Push para a branch main
       env:
