@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Produto from "./componentes/produto/";
-import bootstrap from 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css';
 
 export default Produto;

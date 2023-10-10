@@ -1,11 +1,7 @@
 import "./produto.css";
 import React from "react";
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import pratos from '../../img/pratos.jpg';
 import QR_25 from '../../img/25.png';
-import bootstrap from 'bootstrap'
 
 function template() {
   return (
