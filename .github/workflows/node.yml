@@ -47,21 +47,28 @@ jobs:
     - name: Checkout código
       uses: actions/checkout@v2
 
-    - name: Download artefatos
-      uses: actions/download-artifact@v2
-      with:
-        name: build-artifacts # Nome do conjunto de artefatos
-        path: build # Pasta raiz onde estão os artefatos
-
-    - name: Push para a branch page
+    - name: Clean branch
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
       run: |
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor }}@users.noreply.github.com"
         git fetch
+        git checkout page 
         git rm -rf .
+
+    
+    - name: Download artefatos
+      uses: actions/download-artifact@v2
+      with:
+        name: build-artifacts # Nome do conjunto de artefatos
+        path: . # Pasta raiz onde estão os artefatos
+
+
+    - name: Push para a branch page
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
+      run: |
         git add .
-        git commit -m "Atualizar build"
-        git checkout page        
+        git commit -m "Atualizar build"               
         git push
