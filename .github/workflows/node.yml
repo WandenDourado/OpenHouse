@@ -53,7 +53,7 @@ jobs:
         name: build-artifacts # Nome do conjunto de artefatos
         path: . # Pasta raiz onde estão os artefatos
 
-    - name: Push para a branch main
+    - name: Push para a branch page
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
       run: |
@@ -62,5 +62,5 @@ jobs:
         git fetch
         git add .
         git commit -m "Atualizar build"
-        git checkout -b page        
-        git push
+        git checkout page        
+        git push --set-upstream origin page
