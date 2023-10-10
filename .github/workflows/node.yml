@@ -62,5 +62,5 @@ jobs:
         git fetch
         git add .
         git commit -m "Atualizar build"
-        git checkout page        
+        git checkout -b page        
         git push --set-upstream origin page
