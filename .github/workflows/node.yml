@@ -51,7 +51,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: build-artifacts # Nome do conjunto de artefatos
-        path: . # Pasta raiz onde estão os artefatos
+        path: build # Pasta raiz onde estão os artefatos
 
     - name: Push para a branch page
       env:
@@ -60,7 +60,8 @@ jobs:
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor }}@users.noreply.github.com"
         git fetch
+        git rm -rf .
         git add .
         git commit -m "Atualizar build"
-        git checkout -b page        
-        git push --set-upstream origin page
+        git checkout page        
+        git push
