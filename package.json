@@ -1,5 +1,6 @@
 {
   "name": "open-house",
+  "homepage": "https://WandenDourado.github.io/open-house",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
