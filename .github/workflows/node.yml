@@ -62,5 +62,5 @@ jobs:
         git fetch
         git add .
         git commit -m "Atualizar build"
-        git checkout main        
+        git checkout -b page        
         git push
