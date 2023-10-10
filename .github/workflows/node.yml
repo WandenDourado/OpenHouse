@@ -60,9 +60,7 @@ jobs:
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor }}@users.noreply.github.com"
         git fetch
-        git clean  -d  -f .
         git checkout main
-        git rm -rf .
         git add .
         git commit -m "Atualizar build"
         git push
