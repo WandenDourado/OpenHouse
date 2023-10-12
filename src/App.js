@@ -5,6 +5,7 @@ import home from './img/banner.png';
 
 
 function App() {
+  
   const lista = [
     {
         id: "produtoUm",
@@ -39,11 +40,15 @@ function App() {
             "Balança de cozinha"
         ]
     }
-]
+];
+
+
 
   return (
     <div className="App">
       <header className="App-header"><div class="container">
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+
     <div class="row">
     <img src={home} alt="home"/>
       <p>Olá amigos, bem vindos ao meu Chá de casa nova!</p>

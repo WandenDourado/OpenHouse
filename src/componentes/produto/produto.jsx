@@ -2,12 +2,34 @@ import "./produto.css";
 import React from "react";
 import pratos from '../../img/pratos.jpg';
 import QR_25 from '../../img/25.png';
+import bootstrap from 'bootstrap/dist/js/bootstrap.bundle';
+
 
 function ProdutoJSX({ produto }) {
   return template(produto);
 }
 
 function template(produto) {
+
+
+  function handleClick(){
+    var exampleTriggerEl = document.getElementById('example')
+    var popover = bootstrap.Popover.getOrCreateInstance(exampleTriggerEl) // Returns a Bootstrap popover instance
+    popover.toggle();
+    const texto = "00020126560014BR.GOV.BCB.PIX0111321403228350219Gui Open House R$25520400005303986540525.005802BR5924GUILHERME DOURADO SANTOS6009SAO PAULO622605222TOf4Z5nSlEKogiK6gxlGL6304EFC2";
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(texto)
+        .then(function() {
+          console.log('Texto copiado com sucesso!');
+        })
+        .catch(function(err) {
+          console.error('Erro ao copiar texto: ', err);
+        });
+    } else {
+      console.log('A API Clipboard não é suportada neste navegador.');
+    }
+  }
+
   return (
     <div class="fundo">
       <div class="row">
@@ -20,7 +42,7 @@ function template(produto) {
           </div>
           <div class="row">
             <div class="col-12">
-              <p>Esse valor será utlizado para comprar: {produto.id}</p>
+              <p>Esse valor será utlizado para comprar:</p>
             </div>
             <div class="col-12">
               <ul>
@@ -50,13 +72,14 @@ function template(produto) {
             <div class="col">
               <p>Valor: {produto.valor}</p>
             <img src={QR_25} alt="25" style={{ width: '250px', height: '250px' }} />
+              <button id="example" type="button" onClick={handleClick} class="btn btn-lg btn-success" data-bs-toggle="example" title="Pix copia e cola" data-bs-content="Código pix copiado para sua área de trasnferência, agora só ir para o seu app e colar.">Pix copia e cola</button>
             </div>
             <div class="col">
-              <p>Para realizar o pagamento scanei o QR code utilizando o app do seu banco!</p>
+              <p>Para realizar o pagamento scanei o QR Code utilizando o app do seu banco ou utilize o botão "Pix copia e cola" para copiar o código e então cole-o no app do seu banco!</p>
             </div>
           </div>
           <div class="row">
-              <p>Caso tenha problemas com o QR-code, você pode realizar o pagamento usando a seguite chave pix: </p><b>(11) 998006615</b>
+              <p>Caso tenha problemas com o QR Code, você pode realizar o pagamento usando a seguite chave pix: </p><b>(11) 998006615</b>
           </div>
           </div>
           <div class="modal-footer">

@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import Produto from "./componentes/produto/";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap';
+import 'bootstrap/dist/js/bootstrap.bundle';
+import '@popperjs/core/dist/umd/popper'
+import '@popperjs/core/dist/cjs/popper'
 
 export default Produto;
 
