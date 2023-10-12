@@ -1,9 +1,11 @@
 import React    from "react";
-import template from "./produto.jsx";
+import ProdutoJSX from "./produto.jsx";
 
 class Produto extends React.Component {
   render() {
-    return template.call(this);
+    const produto = this.props;
+    //return ProdutoJSX.call(produto);
+    return ProdutoJSX(produto);
   }
 }
 
