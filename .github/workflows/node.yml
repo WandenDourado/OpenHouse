@@ -1,0 +1,74 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v2
+
+    - name: Instalar Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Instalar dependências
+      run: npm install
+
+    - name: Build da aplicação React
+      run: npm run build
+
+    - name: Publicar artefatos
+      uses: actions/upload-artifact@v2
+      with:
+        name: build-artifacts  # Nome do conjunto de artefatos
+        path: build              
+
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      repository-projects: write
+      pull-requests: write
+      deployments: write
+      pages: write
+      security-events: write
+      packages: write
+      contents: write
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v2
+
+    - name: Clean branch
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
+        git fetch
+        git checkout page 
+        git rm -rf .
+
+    
+    - name: Download artefatos
+      uses: actions/download-artifact@v2
+      with:
+        name: build-artifacts # Nome do conjunto de artefatos
+        path: . # Pasta raiz onde estão os artefatos
+
+
+    - name: Push para a branch page
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}      
+      run: |
+        git add .
+        git commit -m "Atualizar build"               
+        git push

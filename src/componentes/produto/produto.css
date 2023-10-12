@@ -1,0 +1,25 @@
+.left{
+    text-align: left;
+}
+
+.black{
+    color: black;
+}
+
+.fundo {
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    border: 1px solid #DFE9F5;
+    color: gray;
+    margin: 5px;
+}
+
+.center{
+    align-items: center;
+    display: flex;
+}
+
+.redondo{
+    border-radius: 15px;
+}
