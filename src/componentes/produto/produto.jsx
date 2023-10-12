@@ -33,7 +33,7 @@ function template(produto) {
   return (
     <div class="fundo">
       <div class="row">
-        <div class="col">
+        <div class="col center">
         <img class="redondo" style={{ width: '305px', height: '280px' }} src={produto.imagem} alt="kit" />
         </div>
         <div class="col left">

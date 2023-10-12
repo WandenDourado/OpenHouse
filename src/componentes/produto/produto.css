@@ -15,6 +15,11 @@
     margin: 5px;
 }
 
+.center{
+    align-items: center;
+    display: flex;
+}
+
 .redondo{
     border-radius: 15px;
 }
